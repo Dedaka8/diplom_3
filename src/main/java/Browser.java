@@ -6,6 +6,7 @@ public class Browser {
 
         switch (browserType) {
             case CHROME:
+
                 return new ChromeDriver();
 
             case YANDEX:
