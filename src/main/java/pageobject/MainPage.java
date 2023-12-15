@@ -3,7 +3,10 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 
 
 public class MainPage {
@@ -36,6 +39,7 @@ public class MainPage {
     private final By constructorActiveSauce = By.xpath(".//span[text()='Соусы']/parent::div[contains(@class,'current')]");
     private final By constructorActiveFilling = By.xpath(".//span[text()='Начинки']/parent::div[contains(@class,'current')]");
 
+    private final By fillingHeader = By.xpath(".//h2[text()='Начинки']");
 
 
 
@@ -76,6 +80,12 @@ public class MainPage {
     @Step("Нажатие на раздел соусы в конструкторе")
     public void constructorFillingClick(){
         elementClick(constructorFilling);
+        // Ожидание, что кнопка станет кликабельной; ожидание не больше 3 секунд
+//        new WebDriverWait(driver, 3)
+//                .until(ExpectedConditions.elementToBeClickable(By.tagName("button")));
+        new WebDriverWait(driver, Duration.ofSeconds(2))
+                .until(ExpectedConditions.numberOfElementsToBe(constructorActiveBun,0));
+
     }
     @Step("Нажатие на раздел соусы в конструкторе")
     public void constructorSauceClick(){
@@ -83,6 +93,8 @@ public class MainPage {
         }
     @Step("Проверка отображения активного раздела булки в конструкторе")
     public boolean isDisplayedConstructorBun() {
+//        new WebDriverWait(driver, Duration.ofSeconds(5))
+//                .until(ExpectedConditions.visibilityOf(driver.findElement(constructorActiveBun)));
         return driver.findElement(constructorActiveBun).isDisplayed();
     }
     @Step("Проверка отображения активного раздела соусы в конструкторе")
