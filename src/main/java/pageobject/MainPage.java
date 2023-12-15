@@ -80,9 +80,7 @@ public class MainPage {
     @Step("Нажатие на раздел соусы в конструкторе")
     public void constructorFillingClick(){
         elementClick(constructorFilling);
-        // Ожидание, что кнопка станет кликабельной; ожидание не больше 3 секунд
-//        new WebDriverWait(driver, 3)
-//                .until(ExpectedConditions.elementToBeClickable(By.tagName("button")));
+
         new WebDriverWait(driver, Duration.ofSeconds(2))
                 .until(ExpectedConditions.numberOfElementsToBe(constructorActiveBun,0));
 
@@ -93,8 +91,7 @@ public class MainPage {
         }
     @Step("Проверка отображения активного раздела булки в конструкторе")
     public boolean isDisplayedConstructorBun() {
-//        new WebDriverWait(driver, Duration.ofSeconds(5))
-//                .until(ExpectedConditions.visibilityOf(driver.findElement(constructorActiveBun)));
+//    
         return driver.findElement(constructorActiveBun).isDisplayed();
     }
     @Step("Проверка отображения активного раздела соусы в конструкторе")
