@@ -7,9 +7,10 @@ public class CheckConstructorNavigationTest extends BaseTest{
 
     @Test
     @DisplayName("Проверка перехода к разделу булки в конструкторе")
-    public void checkBunClickTest(){
+    public void checkBunClickTest() throws InterruptedException {
         MainPage mainPage = new MainPage(driver);
         mainPage.constructorFillingClick();
+        Thread.sleep(1000);
         mainPage.constructorBunClick();
         Assert.assertTrue(mainPage.isDisplayedConstructorBun());
 
